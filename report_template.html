@@ -1,0 +1,557 @@
+<title>Pakistan and New York</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+<style>
+/* Layout: one reading column for prose, wider blocks for charts. Neutrals match the chart palette. */
+:root {
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --line: #e1e0d9; --grid: #e1e0d9; --axis: #c3c2b7;
+  --blue: #2a78d6; --orange: #eb6834; --gray-bar: #c3c2b7;
+  --blue-old: #9ec5f4; --blue-new: #256abf; --link: #1c5cab;
+  --hero-bg: #0e2a4d; --hero-bg-2: #15407a; --hero-ink: #ffffff; --hero-ink-2: #c5d3e8; --hero-accent: #ff8f5e; --hero-line: rgba(255,255,255,0.18); --tint: #fdf1ea; --hl-row: #fdf1ea;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-head: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --line: #2c2c2a; --grid: #2c2c2a; --axis: #383835;
+    --blue: #3987e5; --orange: #d95926; --gray-bar: #4b4b47;
+    --blue-old: #1c5cab; --blue-new: #86b6ef; --link: #86b6ef;
+    --hero-bg: #0b1d36; --hero-bg-2: #12335e; --hero-ink: #ffffff; --hero-ink-2: #b4c4dc; --hero-accent: #ff8f5e; --hero-line: rgba(255,255,255,0.16); --tint: #2a1c14; --hl-row: #2a1c14;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --line: #2c2c2a; --grid: #2c2c2a; --axis: #383835;
+  --blue: #3987e5; --orange: #d95926; --gray-bar: #4b4b47;
+  --blue-old: #1c5cab; --blue-new: #86b6ef; --link: #86b6ef;
+  --hero-bg: #0b1d36; --hero-bg-2: #12335e; --hero-ink: #ffffff; --hero-ink-2: #b4c4dc; --hero-accent: #ff8f5e; --hero-line: rgba(255,255,255,0.16); --tint: #2a1c14; --hl-row: #2a1c14;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--page); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 56px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--page); z-index: 10; }
+a { color: var(--link); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.wrap { max-width: 1040px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-head); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(1.9rem, 4.8vw, 3.1rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.4rem, 2.8vw, 1.85rem); font-weight: 800; letter-spacing: -0.015em; padding-left: 16px; border-left: 5px solid var(--orange); }
+h3 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0; }
+.prose { max-width: 68ch; display: flex; flex-direction: column; gap: 14px; color: var(--ink); }
+.small { font-size: 0.875rem; color: var(--ink-2); }
+.eyebrow { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; }
+/* Figures inside running text are the point of the sentence, so they carry weight. */
+.findings [data-f], .prose [data-f], .lede [data-f], .keyfind [data-f] { font-weight: 700; }
+.findings li::marker { font-weight: 800; color: var(--orange); }
+
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--page); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; gap: 4px 20px; flex-wrap: wrap; padding-block: 10px; font-size: 0.875rem; }
+.nav .brand { font-family: var(--font-head); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.8rem; color: var(--ink); margin-right: 8px; }
+.nav a { color: var(--ink-2); text-decoration: none; padding: 2px 0; font-weight: 500; }
+.nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--orange); text-underline-offset: 5px; }
+
+.hero { display: flex; flex-direction: column; gap: 18px; margin-top: 24px; padding: clamp(24px, 5vw, 48px); border-radius: 16px; color: var(--hero-ink);
+  background: radial-gradient(120% 140% at 100% 0%, var(--hero-bg-2) 0%, var(--hero-bg) 60%); position: relative; overflow: hidden; }
+.hero .eyebrow { color: var(--hero-accent); }
+.hero h1 { color: var(--hero-ink); max-width: 20ch; }
+.hero .lede { max-width: 62ch; font-size: 1.1rem; color: var(--hero-ink-2); }
+.hero .lede [data-f] { color: var(--hero-ink); }
+.hero-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 24px 40px; align-items: end; }
+.spark { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.spark svg { width: 100%; height: auto; display: block; }
+.spark .cap { font-size: 0.78rem; color: var(--hero-ink-2); }
+@media (max-width: 760px) { .hero-top { grid-template-columns: minmax(0, 1fr); } }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 24px; padding-top: 24px; margin-top: 8px; border-top: 1px solid var(--hero-line); }
+.tile { border-top: 3px solid var(--hero-accent); padding-top: 12px; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.tile .num { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--hero-ink); }
+.tile .lab { font-size: 0.88rem; color: var(--hero-ink-2); }
+.keyfind { margin-top: 28px; display: flex; flex-direction: column; gap: 8px; padding: 22px clamp(18px, 3vw, 30px); border-radius: 12px; background: var(--tint); border: 1px solid var(--line); border-left: 6px solid var(--orange); }
+.keyfind .eyebrow { color: var(--orange); }
+.keyfind p.big { font-family: var(--font-head); font-size: clamp(1.2rem, 2.6vw, 1.65rem); font-weight: 800; line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance; max-width: 40ch; }
+.keyfind p.why { max-width: 66ch; color: var(--ink-2); }
+.hl { color: var(--orange); }
+[data-bq] { font-weight: 700; }
+.pager { display: flex; flex-wrap: wrap; gap: 14px 24px; margin-top: 56px; }
+.pager a { flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 4px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); text-decoration: none; }
+.pager a:hover { border-color: var(--orange); }
+.pager .k { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); font-weight: 700; }
+.pager .t { font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; line-height: 1.25; }
+
+section.block { display: flex; flex-direction: column; gap: 20px; padding-block: 56px 0; scroll-margin-top: 56px; }
+.findings { max-width: 68ch; margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 10px; }
+
+figure.chart { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 1px 2px rgba(14,42,77,0.06); padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.chart h3 { font-weight: 700; font-size: 1.1rem; }
+.chart .sub { font-size: 0.875rem; color: var(--ink-2); margin-top: -6px; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; font-size: 0.875rem; }
+.controls label { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); }
+.controls select, .controls input[type="range"] { accent-color: var(--blue); }
+.controls select { background: var(--page); color: var(--ink); border: 1px solid var(--axis); border-radius: 6px; padding: 5px 8px; font: inherit; }
+.controls input[type="range"] { width: min(280px, 60vw); }
+.controls .readout { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+.segs { display: inline-flex; border: 1px solid var(--axis); border-radius: 8px; overflow: hidden; }
+.seg { appearance: none; background: transparent; color: var(--ink-2); border: 0; padding: 6px 12px; font: inherit; font-size: 0.875rem; cursor: pointer; }
+.seg + .seg { border-left: 1px solid var(--axis); }
+.seg[aria-pressed="true"] { background: var(--hero-bg); color: #fff; font-weight: 600; }
+.plot { width: 100%; min-width: 0; }
+.status { font-size: 0.95rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+.note { font-size: 0.8rem; color: var(--ink-2); }
+details.tv { font-size: 0.875rem; color: var(--ink-2); }
+details.tv summary { cursor: pointer; padding: 2px 0; }
+.tablewrap { overflow-x: auto; max-width: 100%; margin-top: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--ink); font-weight: 700; border-bottom: 2px solid var(--axis); }
+tr.hl-row td { background: var(--hl-row); font-weight: 700; }
+td { color: var(--ink); }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px 40px; }
+.two > * { min-width: 0; }
+.callout { border-left: 3px solid var(--orange); padding: 2px 0 2px 16px; max-width: 68ch; }
+dl.defs { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; font-size: 0.9rem; max-width: 760px; }
+dl.defs dt { font-weight: 700; }
+dl.defs dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 560px) { dl.defs { grid-template-columns: 1fr; gap: 2px; } dl.defs dd { margin-bottom: 10px; } figure.chart { padding: 14px 12px 12px; } }
+footer { margin-top: 64px; padding: 24px clamp(18px, 3vw, 30px); border-radius: 12px; background: var(--hero-bg); color: var(--hero-ink-2); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 32px; align-items: flex-end; }
+footer .by { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hero-accent); font-weight: 700; }
+footer .author { display: flex; flex-direction: column; gap: 4px; padding-left: 16px; border-left: 4px solid var(--hero-accent); }
+footer .role { display: flex; flex-direction: column; gap: 1px; font-size: 0.92rem; color: var(--hero-ink-2); }
+footer .role strong { color: var(--hero-ink); font-weight: 700; }
+footer .name { font-family: var(--font-head); font-size: clamp(1.25rem, 2.5vw, 1.55rem); font-weight: 800; color: var(--hero-ink); letter-spacing: -0.02em; line-height: 1.15; }
+footer .meta { font-size: 0.85rem; color: var(--hero-ink-2); }
+footer code { color: var(--hero-ink); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.35.3/plotly.min.js"></script>
+
+<nav class="nav" aria-label="Sections"><div class="wrap">
+  <span class="brand">Policy East</span>
+  <a href="#findings">Findings</a><a href="#trade">Trade over time</a><a href="#entry">Entry points</a>
+  <a href="#products">Products</a><a href="#community">Community</a><a href="#limits">Limits</a><a href="#method">Method</a>
+</div></nav>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="hero-top">
+    <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+    <p class="eyebrow">Policy East · Data analysis</p>
+    <h1>Where Pakistani goods land, and where Pakistani New Yorkers live</h1>
+    <p class="lede">US imports from Pakistan reached <span data-f="us_last_bn" data-fmt="bn2"></span> in <span data-f="last_year" data-fmt="year"></span>. New York is the largest entry point for those goods, and about <span data-f="nyc_pakistani" data-fmt="round1000"></span> Pakistani New Yorkers live in the city. This report reads both datasets, shows what they say, and marks where they stop.</p>
+    </div>
+    <div class="spark" id="spark" aria-hidden="true"></div>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </header>
+
+  <aside class="keyfind" aria-label="Key finding">
+    <p class="eyebrow">Key finding</p>
+    <p class="big">New York handles <span class="hl" data-f="ny_share_last_pct" data-fmt="pct0"></span> of US imports from Pakistan, and ranked first in every year of the data.</p>
+    <p class="why">That is <span data-f="ny_last_bn" data-fmt="bn2"></span> of <span data-f="us_last_bn" data-fmt="bn2"></span> in <span data-f="last_year" data-fmt="year"></span>. Its share is down from <span data-f="ny_share_first_pct" data-fmt="pct0"></span> in <span data-f="first_year" data-fmt="year"></span> because other ports grew faster, but it is still more than twice the size of the next port. The data records where goods entered, not who bought them.</p>
+  </aside>
+
+  <section class="block" id="findings">
+    <h2>What we found</h2>
+    <ol class="findings">
+      <li><strong>Imports are up.</strong> US imports from Pakistan grew <span data-f="us_growth_pct" data-fmt="pct0"></span> between <span data-f="first_year" data-fmt="year"></span> and <span data-f="last_year" data-fmt="year"></span>, from <span data-f="us_first_bn" data-fmt="bn2"></span> to <span data-f="us_last_bn" data-fmt="bn2"></span>. Growth was uneven: a jump in 2021 and 2022, a fall in 2023 and a partial recovery since.</li>
+      <li><strong>New York leads.</strong> New York took <span data-f="ny_share_last_pct" data-fmt="pct0"></span> of <span data-f="last_year" data-fmt="year"></span> imports (<span data-f="ny_last_bn" data-fmt="bn2"></span>). It ranked first among US customs districts in every year of the data.</li>
+      <li><strong>Textiles dominate.</strong> Knit apparel, woven apparel and home textiles make up <span data-f="core_share_pct" data-fmt="pct0"></span> of imports. Woven apparel grew fastest of the large groups, <span data-f="fastest_big_growth_pct" data-fmt="sgn0"></span> since <span data-f="first_year" data-fmt="year"></span>.</li>
+      <li><strong>New York leans toward rice and woven apparel.</strong> New York takes a larger share than usual of <span data-f="top_lq_group" data-fmt="lower"></span> (<span data-f="top_lq_group_ny_share_pct" data-fmt="pct0"></span>) and <span data-f="second_lq_group" data-fmt="lower"></span> (<span data-f="second_lq_group_ny_share_pct" data-fmt="pct0"></span>), against <span data-f="ny_share_last_pct" data-fmt="pct0"></span> for all products.</li>
+      <li><strong>The community is concentrated.</strong> About <span data-f="nyc_pakistani" data-fmt="int"></span> New Yorkers identify as Pakistani (margin of error ±<span data-f="nyc_pakistani_moe" data-fmt="int"></span>). <span data-f="south_brooklyn_share_pct" data-fmt="pct0"></span> of them live in four south Brooklyn areas.</li>
+      <li><strong>Many neighborhood estimates are weak.</strong> <span data-f="areas_low_reliability" data-fmt="int"></span> of <span data-f="areas_total" data-fmt="int"></span> areas are weak: <span data-f="areas_cv_ge30" data-fmt="int"></span> have a coefficient of variation of 30% or more and <span data-f="areas_zero_estimate" data-fmt="int"></span> show an estimate of zero.</li>
+    </ol>
+  </section>
+
+  <section class="block" id="trade">
+    <h2>Imports are up, with a jump in 2021 and 2022</h2>
+    <div class="prose">
+      <p>Imports for consumption rose from <span data-f="us_first_bn" data-fmt="bn2"></span> in <span data-f="first_year" data-fmt="year"></span> to <span data-f="us_last_bn" data-fmt="bn2"></span> in <span data-f="last_year" data-fmt="year"></span>, which is <span data-f="cagr_pct" data-fmt="pct1"></span> a year on average. The peak was <span data-f="peak_bn" data-fmt="bn2"></span> in <span data-f="peak_year" data-fmt="year"></span>. The next year imports fell <span data-f="drop_after_peak_pct" data-fmt="abs0"></span>.</p>
+      <p>The data shows the change. It does not show the cause, which this analysis did not look into.</p>
+    </div>
+    <figure class="chart">
+      <h3 id="tA">US imports from Pakistan, by year</h3>
+      <p class="sub">Imports for consumption. New York means the New York City customs district.</p>
+      <div class="controls"><div class="segs" id="segA" role="group" aria-label="Measure"></div></div>
+      <div class="plot" id="plotA" role="img" aria-labelledby="tA"></div>
+      <p class="note">Source: U.S. Census Bureau, International Trade API. Current dollars, not adjusted for inflation. Hover a line for exact values.</p>
+      <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tblA"></div></details>
+    </figure>
+  </section>
+
+  <section class="block" id="entry">
+    <h2>New York is the largest entry point</h2>
+    <div class="prose">
+      <p>New York ranked first in every year. Its share ran from <span data-f="ny_share_min_pct" data-fmt="pct0"></span> in <span data-f="ny_share_min_year" data-fmt="year"></span> to <span data-f="ny_share_max_pct" data-fmt="pct0"></span> in <span data-f="ny_share_max_year" data-fmt="year"></span>. Its imports grew <span data-f="ny_growth_pct" data-fmt="pct0"></span> since <span data-f="first_year" data-fmt="year"></span>, slower than the <span data-f="us_growth_pct" data-fmt="pct0"></span> for the country, so its share slipped from <span data-f="ny_share_first_pct" data-fmt="pct0"></span> to <span data-f="ny_share_last_pct" data-fmt="pct0"></span>.</p>
+      <p>In <span data-f="last_year" data-fmt="year"></span> the next largest districts were <span data-f="second_district" data-fmt="text"></span> (<span data-f="second_district_share_pct" data-fmt="pct0"></span>) and <span data-f="third_district" data-fmt="text"></span> (<span data-f="third_district_share_pct" data-fmt="pct0"></span>). A concentration index for entry ports (the HHI, near 0 when trade is spread across many ports and 10,000 when one port handles everything) fell from <span data-f="entry_hhi_first" data-fmt="int"></span> to <span data-f="entry_hhi_last" data-fmt="int"></span>. Imports now spread across more ports than in <span data-f="first_year" data-fmt="year"></span>.</p>
+    </div>
+    <figure class="chart">
+      <h3 id="tB">Imports by customs district</h3>
+      <p class="sub">Eight largest districts for the chosen year, with the rest combined.</p>
+      <div class="controls"><label for="yearB">Year <input type="range" id="yearB" min="0" max="15" step="1"></label><span class="readout" id="yearBOut"></span></div>
+      <div class="plot" id="plotB" role="img" aria-labelledby="tB"></div>
+      <p class="status" id="statusB" aria-live="polite"></p>
+      <p class="note">A customs district records where goods entered the US. It does not record who bought them.</p>
+      <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tblB"></div></details>
+    </figure>
+  </section>
+
+  <section class="block" id="products">
+    <h2>Textiles dominate, and New York leans toward rice and woven apparel</h2>
+    <div class="prose">
+      <p>Knit apparel, woven apparel and home textiles are <span data-f="core_share_pct" data-fmt="pct0"></span> of imports in <span data-f="last_year" data-fmt="year"></span>. Woven apparel grew fastest of the groups above $1bn. <span data-f="small_group_note" data-fmt="text"></span></p>
+      <p>New York's share differs by product. The location quotient divides New York's share of a product by its share of all imports. It is <span data-f="top_lq" data-fmt="one"></span> for <span data-f="top_lq_group" data-fmt="lower"></span> and <span data-f="second_lq" data-fmt="one"></span> for <span data-f="second_lq_group" data-fmt="lower"></span>, so New York takes more of those than its overall weight would predict. Rice and cereals is a small trade in dollars, which makes its share easy to move.</p>
+    </div>
+    <figure class="chart">
+      <h3 id="tC">Imports by product group, two years compared</h3>
+      <p class="sub">Imports for consumption, $ billions. The change column compares the two years.</p>
+      <div class="controls">
+        <label for="fromC">From <select id="fromC"></select></label>
+        <label for="toC">To <select id="toC"></select></label>
+      </div>
+      <div class="plot" id="plotC" role="img" aria-labelledby="tC"></div>
+      <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tblC"></div></details>
+    </figure>
+    <figure class="chart">
+      <h3 id="tD">New York's share of each product group</h3>
+      <p class="sub">Orange bars are above New York's share of all imports. The line marks that overall share.</p>
+      <div class="controls"><label for="yearD">Year <select id="yearD"></select></label></div>
+      <div class="plot" id="plotD" role="img" aria-labelledby="tD"></div>
+      <p class="note">Labels show New York's imports of the group out of the national total, in $ millions.</p>
+      <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tblD"></div></details>
+    </figure>
+  </section>
+
+  <section class="block" id="community">
+    <h2>About <span data-f="nyc_pakistani" data-fmt="round1000"></span> Pakistani New Yorkers, mostly in Brooklyn and Queens</h2>
+    <div class="prose">
+      <p>The 2020–2024 American Community Survey estimates <span data-f="nyc_pakistani" data-fmt="int"></span> residents (margin of error ±<span data-f="nyc_pakistani_moe" data-fmt="int"></span>) who identify as Pakistani, which is <span data-f="pak_share_of_pop_pct" data-fmt="pct2"></span> of the city. About <span data-f="nyc_pakistan_born" data-fmt="int"></span> (±<span data-f="nyc_pakistan_born_moe" data-fmt="int"></span>) were born in Pakistan. Four south Brooklyn areas (Borough Park, Coney Island, Flatbush and Midwood, and Sheepshead Bay) hold about <span data-f="south_brooklyn" data-fmt="int"></span> people (±<span data-f="south_brooklyn_moe" data-fmt="int"></span>), or <span data-f="south_brooklyn_share_pct" data-fmt="pct0"></span> of the city total.</p>
+      <p>These are survey estimates, so each comes with a margin of error. The coefficient of variation (CV) divides the standard error by the estimate. Under 30% is reasonably precise. At 30% or more, or when the estimate is zero, it is weak. In <span data-f="areas_moe_ge_estimate" data-fmt="int"></span> areas the margin of error is as large as the estimate itself.</p>
+    </div>
+    <figure class="chart">
+      <h3 id="tE">Pakistani New Yorkers by neighborhood area</h3>
+      <p class="sub">Estimates with 90% margins of error. Areas are Census PUMAs of about 100,000 people.</p>
+      <div class="controls">
+        <div class="segs" id="segE" role="group" aria-label="Measure"></div>
+        <label for="boroughE">Borough <select id="boroughE"></select></label>
+        <label for="allE"><input type="checkbox" id="allE"> Show every area</label>
+      </div>
+      <div class="plot" id="plotE" role="img" aria-labelledby="tE"></div>
+      <p class="note">Source: U.S. Census Bureau, ACS 2020–2024 5-year estimates, tables B02015 and B05006. Neighboring bars overlap within their margins of error, so the order of close areas is not firm.</p>
+      <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tblE"></div></details>
+    </figure>
+    <figure class="chart">
+      <h3>By borough</h3>
+      <div class="tablewrap" id="tblBoro"></div>
+      <p class="note">Borough margins of error combine the county margins by the standard Census method.</p>
+    </figure>
+  </section>
+
+  <section class="block" id="limits">
+    <h2>What the data can and cannot say</h2>
+    <div class="prose">
+      <p>The two datasets sit side by side in this report. Nothing in them shows that the Pakistani community in New York drives the trade that enters through the port. Trade data records where goods came into the US. Community data counts residents. A test of any link needs importer or distributor records.</p>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <h3>Trade data</h3>
+        <p>Customs district means port of entry, not final buyer. Goods can enter in New York and be sold anywhere. Figures are goods only and exclude services. Dollar values are nominal, in current dollars with no adjustment for inflation, so growth rates overstate real growth. The causes of the 2021–2022 jump and the 2023 fall are not analyzed. Tariff changes were not analyzed either.</p>
+      </div>
+      <div class="prose">
+        <h3>Community data</h3>
+        <p>"Pakistani alone" excludes people who report more than one race or origin, so it is a floor for the community. Small-area estimates carry large margins of error. Ranks between close neighbors are approximate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and sources</h2>
+    <div class="prose">
+      <p>Everything on this page comes from one Python script (<code>analysis.py</code>) that reads the downloaded Census files, runs the checks below, and writes the data this page reads.</p>
+    </div>
+    <ol class="findings">
+      <li><strong>Load and check.</strong> Districts must add up to the API's own total row, there must be no duplicate rows, and the New York file must match the New York rows of the all-districts file. An early version of the summary added the API's "TOTAL FOR ALL DISTRICTS" rows to the district rows and doubled every total. The script now stops if districts and totals disagree.</li>
+      <li><strong>Trade.</strong> Imports for consumption, summed by year and district. Product groups use HS 2-digit chapters. Growth uses the compound annual rate so the 2021–2022 jump does not distort the trend.</li>
+      <li><strong>New York.</strong> Share of the national total, rank among districts, an entry-port concentration index, and a location quotient for each product group.</li>
+      <li><strong>Community.</strong> City and borough totals add county estimates, with margins of error combined as the square root of the sum of squares. Each area gets a coefficient of variation from its margin of error divided by 1.645.</li>
+    </ol>
+    <dl class="defs">
+      <dt>Imports for consumption</dt><dd>Goods that enter the US market, excluding goods held in bonded storage or re-exported.</dd>
+      <dt>HS chapter</dt><dd>The first two digits of the Harmonized System product code.</dd>
+      <dt>PUMA</dt><dd>Public Use Microdata Area, a Census area of about 100,000 people. NYC has 55.</dd>
+      <dt>Margin of error</dt><dd>The range around a survey estimate at 90% confidence.</dd>
+      <dt>Location quotient</dt><dd>New York's share of a product divided by its share of all imports. Above 1 means over-represented.</dd>
+    </dl>
+    <p class="small">Sources: <a href="https://www.census.gov/data/developers/data-sets/international-trade.html" target="_blank" rel="noopener">Census International Trade API</a>, <a href="https://www.census.gov/data/developers/data-sets/acs-5year.html" target="_blank" rel="noopener">American Community Survey 5-year data</a>.</p>
+  </section>
+
+  <footer>
+    <div class="author"><div class="by">Prepared by</div><div class="name">Mehreen Ali Gillani</div><div class="role"><strong>Data Scientist</strong><span>City University of New York</span></div></div>
+    <div class="meta">For Policy East · November 2026<br>Figures update when <code>analysis.py</code> is run on new data.</div>
+  </footer>
+</main>
+
+<script>
+const DATA = /*__REPORT_DATA__*/null;
+
+(function () {
+  "use strict";
+  if (!DATA) { document.querySelector("main").insertAdjacentHTML("afterbegin", "<p>The report data is missing.</p>"); return; }
+
+  const F = DATA.findings, Y = DATA.meta.years, N = Y.length, iLast = N - 1, yearly = DATA.yearly;
+  const FONT = '"Inter", system-ui, -apple-system, "Segoe UI", sans-serif';
+  const hasPlotly = typeof Plotly !== "undefined";
+  const state = { metricA: "value", yearB: iLast, fromC: 0, toC: iLast, yearD: iLast, measureE: "pak", boroughE: "All", allE: false };
+
+  const $ = id => document.getElementById(id);
+  /* ---------- formatting ---------- */
+  const fmt = {
+    bn1: v => "$" + v.toFixed(1) + "bn", bn2: v => "$" + v.toFixed(2) + "bn",
+    pct0: v => Math.round(v) + "%", pct1: v => v.toFixed(1) + "%", pct2: v => v.toFixed(2) + "%",
+    abs0: v => Math.abs(Math.round(v)) + "%",
+    sgn0: v => (v >= 0 ? "+" : "−") + Math.abs(Math.round(v)) + "%",
+    int: v => Math.round(v).toLocaleString("en-US"),
+    round1000: v => (Math.round(v / 1000) * 1000).toLocaleString("en-US"),
+    one: v => v.toFixed(1), year: v => String(v), text: v => String(v), lower: v => String(v).toLowerCase()
+  };
+  document.querySelectorAll("[data-f]").forEach(el => {
+    const v = F[el.dataset.f];
+    el.textContent = v === null || v === undefined ? "n/a" : (fmt[el.dataset.fmt || "int"])(v);
+  });
+
+  const tiles = [
+    { num: fmt.bn2(F.us_last_bn), lab: "US imports from Pakistan in " + F.last_year + ", " + fmt.sgn0(F.us_growth_pct) + " since " + F.first_year + " (current dollars)" },
+    { num: fmt.pct0(F.ny_share_last_pct), lab: "entered through New York, the top port in every year of the data" },
+    { num: "~" + fmt.round1000(F.nyc_pakistani), lab: "New Yorkers identify as Pakistani (±" + fmt.int(F.nyc_pakistani_moe) + ")" },
+    { num: fmt.pct0(F.south_brooklyn_share_pct), lab: "of them live in four south Brooklyn areas" }
+  ];
+  (function sparkline() {
+    const vals = yearly.map(r => r.us_usd_m), w = 300, h = 90, pad = 8, mx = Math.max.apply(null, vals) * 1.05, mn = Math.min.apply(null, vals) * 0.8;
+    const px = i => pad + i * (w - 2 * pad) / (vals.length - 1), py = v => h - pad - (v - mn) / (mx - mn) * (h - 2 * pad);
+    const pts = vals.map((v, i) => px(i).toFixed(1) + "," + py(v).toFixed(1)).join(" ");
+    const area = "M" + px(0).toFixed(1) + "," + (h - pad) + " L" + pts.split(" ").join(" L") + " L" + px(vals.length - 1).toFixed(1) + "," + (h - pad) + " Z";
+    const li = vals.length - 1;
+    $("spark").innerHTML = '<svg viewBox="0 0 ' + w + " " + h + '" preserveAspectRatio="xMidYMid meet"><path d="' + area + '" fill="rgba(255,255,255,0.10)"/><polyline points="' + pts + '" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="' + px(li).toFixed(1) + '" cy="' + py(vals[li]).toFixed(1) + '" r="5" fill="#ff8f5e" stroke="#0e2a4d" stroke-width="2"/></svg><span class="cap">US imports from Pakistan, ' + Y[0] + " to " + Y[li] + "</span>";
+  })();
+  document.getElementById("tiles").innerHTML = tiles.map(t => '<div class="tile"><span class="num">' + t.num + '</span><span class="lab">' + t.lab + "</span></div>").join("");
+
+  /* ---------- helpers ---------- */
+  function colors() {
+    const s = getComputedStyle(document.documentElement), g = n => s.getPropertyValue(n).trim();
+    return { ink: g("--ink"), ink2: g("--ink-2"), muted: g("--muted"), grid: g("--grid"), axis: g("--axis"), surf: g("--surface"),
+      blue: g("--blue"), orange: g("--orange"), gray: g("--gray-bar"), old: g("--blue-old"), nw: g("--blue-new") };
+  }
+  function base(c) {
+    return {
+      paper_bgcolor: c.surf, plot_bgcolor: c.surf, font: { family: FONT, color: c.ink2, size: 12 },
+      margin: { l: 56, r: 20, t: 10, b: 40 }, showlegend: false, bargap: 0.5,
+      hoverlabel: { bgcolor: c.ink, bordercolor: c.ink, font: { family: FONT, color: c.surf, size: 12 } },
+      xaxis: { gridcolor: c.grid, linecolor: c.axis, zeroline: false, tickfont: { color: c.muted }, fixedrange: true },
+      yaxis: { gridcolor: c.grid, zeroline: false, tickfont: { color: c.muted }, fixedrange: true }
+    };
+  }
+  const narrow = () => document.documentElement.clientWidth < 620;
+  function wrap(s, n) {
+    const words = String(s).split(" "), lines = []; let cur = "";
+    words.forEach(w => { if ((cur + " " + w).trim().length > n && cur) { lines.push(cur); cur = w; } else { cur = (cur + " " + w).trim(); } });
+    if (cur) lines.push(cur);
+    return lines.join("<br>");
+  }
+  function draw(id, traces, layout) {
+    if (!hasPlotly) { $(id).innerHTML = '<p class="note">The chart could not load. The table below holds the same numbers.</p>'; document.querySelectorAll("details.tv").forEach(d => d.open = true); return; }
+    Plotly.react(id, traces, layout, { displayModeBar: false, responsive: true });
+  }
+  function table(id, headers, rows, hl) {
+    $(id).innerHTML = "<table><thead><tr>" + headers.map(h => "<th>" + h + "</th>").join("") + "</tr></thead><tbody>" +
+      rows.map((r, i) => "<tr" + (hl && hl(i) ? ' class="hl-row"' : "") + ">" + r.map(v => "<td>" + v + "</td>").join("") + "</tr>").join("") + "</tbody></table>";
+  }
+  function seg(id, options, key, onChange) {
+    const box = $(id); box.innerHTML = "";
+    options.forEach(o => {
+      const b = document.createElement("button"); b.type = "button"; b.className = "seg"; b.textContent = o.label;
+      b.setAttribute("aria-pressed", String(state[key] === o.value));
+      b.addEventListener("click", () => { state[key] = o.value; box.querySelectorAll(".seg").forEach(x => x.setAttribute("aria-pressed", String(x === b))); onChange(); });
+      box.appendChild(b);
+    });
+  }
+  function fillSelect(id, values, labels, selected) {
+    $(id).innerHTML = values.map((v, i) => '<option value="' + v + '"' + (v === selected ? " selected" : "") + ">" + labels[i] + "</option>").join("");
+  }
+
+  /* ---------- Chart A: trend ---------- */
+  function renderA() {
+    const c = colors(), L = base(c), x = yearly.map(r => r.year);
+    let traces;
+    if (state.metricA === "value") {
+      const us = yearly.map(r => r.us_usd_m / 1000), ny = yearly.map(r => r.ny_usd_m / 1000), top = Math.max.apply(null, us);
+      traces = [
+        { x: x, y: us, name: "All US customs districts", mode: "lines", line: { color: c.blue, width: 2 }, hovertemplate: "$%{y:.2f}bn<extra>All US districts</extra>" },
+        { x: x, y: ny, name: "New York City district", mode: "lines", line: { color: c.orange, width: 2 }, hovertemplate: "$%{y:.2f}bn<extra>New York City district</extra>" },
+        { x: [x[iLast]], y: [us[iLast]], mode: "markers", marker: { color: c.blue, size: 10, line: { color: c.surf, width: 2 } }, hoverinfo: "skip", showlegend: false },
+        { x: [x[iLast]], y: [ny[iLast]], mode: "markers", marker: { color: c.orange, size: 10, line: { color: c.surf, width: 2 } }, hoverinfo: "skip", showlegend: false }
+      ];
+      L.yaxis = Object.assign(L.yaxis, { range: [0, Math.ceil(top + 0.6)], tickprefix: "$", ticksuffix: "bn", dtick: 1 });
+      L.showlegend = true; L.legend = { orientation: "h", x: 0, y: 1.14, font: { color: c.ink2 } };
+      L.margin.t = 36;
+      if (!narrow()) {
+        L.margin.r = 100;
+        L.annotations = [
+          { x: x[iLast], y: us[iLast], text: "US total<br>$" + us[iLast].toFixed(2) + "bn", showarrow: false, xanchor: "left", xshift: 12, font: { color: c.ink, size: 12 } },
+          { x: x[iLast], y: ny[iLast], text: "New York<br>$" + ny[iLast].toFixed(2) + "bn", showarrow: false, xanchor: "left", xshift: 12, font: { color: c.ink, size: 12 } }
+        ];
+      }
+    } else {
+      traces = [
+        { x: x, y: yearly.map(r => r.ny_share_pct), customdata: yearly.map(r => r.ny_rank), mode: "lines+markers", line: { color: c.orange, width: 2 }, marker: { color: c.orange, size: 8, line: { color: c.surf, width: 2 } },
+          hovertemplate: "%{y:.1f}% of US imports<br>Rank #%{customdata}<extra>New York</extra>" }
+      ];
+      L.yaxis = Object.assign(L.yaxis, { range: [0, 40], ticksuffix: "%", dtick: 10 });
+    }
+    L.hovermode = "x unified";
+    L.xaxis = Object.assign(L.xaxis, { range: [x[0] - 0.4, x[iLast] + 0.4], tick0: x[0], dtick: 3 });
+    L.height = 380;
+    draw("plotA", traces, L);
+    table("tblA", ["Year", "US total ($bn)", "New York ($bn)", "New York share", "NY rank", "Entry HHI"],
+      yearly.map(r => [r.year, (r.us_usd_m / 1000).toFixed(2), (r.ny_usd_m / 1000).toFixed(2), r.ny_share_pct.toFixed(1) + "%", "#" + r.ny_rank, Math.round(r.entry_hhi).toLocaleString("en-US")]));
+  }
+
+  /* ---------- Chart B: districts ---------- */
+  function districtsFor(idx) {
+    const all = DATA.districts.map(d => ({ name: d.name, ny: d.is_ny, v: d.usd_m[idx] / 1000 })).sort((a, b) => b.v - a.v);
+    const total = all.reduce((s, d) => s + d.v, 0);
+    const rest = all.slice(8).reduce((s, d) => s + d.v, 0);
+    return { rows: all.slice(0, 8).concat([{ name: "All other districts", ny: false, v: rest }]), total: total };
+  }
+  function renderB() {
+    const c = colors(), L = base(c), idx = state.yearB, d = districtsFor(idx), n = narrow() ? 20 : 40;
+    const names = d.rows.map(r => r.name), vals = d.rows.map(r => r.v), shares = d.rows.map(r => r.v / d.total * 100);
+    const trace = { type: "bar", orientation: "h", x: vals, y: names.map(s => wrap(s, n)), customdata: shares,
+      marker: { color: d.rows.map(r => r.ny ? c.orange : c.gray) },
+      text: d.rows.map((r, i) => "$" + r.v.toFixed(2) + "bn · " + shares[i].toFixed(0) + "%"), textposition: "outside", cliponaxis: false,
+      textfont: { color: c.ink, size: 12, family: FONT }, hovertemplate: "%{y}<br>$%{x:.2f}bn<br>%{customdata:.1f}% of US total<extra></extra>" };
+    L.xaxis = Object.assign(L.xaxis, { visible: false, range: [0, Math.max.apply(null, vals) * 1.6] });
+    L.yaxis = Object.assign(L.yaxis, { autorange: "reversed", tickfont: { color: c.ink2, size: 12 } });
+    L.margin = { l: narrow() ? 120 : 190, r: 10, t: 6, b: 6 }; L.height = 380;
+    draw("plotB", [trace], L);
+    $("yearBOut").textContent = Y[idx];
+    const ny = d.rows.find(r => r.ny), rank = yearly[idx].ny_rank;
+    $("statusB").textContent = Y[idx] + ": US total $" + d.total.toFixed(2) + "bn. New York $" + (ny ? ny.v : 0).toFixed(2) + "bn (" + yearly[idx].ny_share_pct.toFixed(0) + "%), rank #" + rank + ".";
+    table("tblB", ["District", "Imports ($bn)", "Share of US total"], d.rows.map((r, i) => [r.name, r.v.toFixed(2), shares[i].toFixed(1) + "%"]), i => d.rows[i].ny);
+  }
+
+  /* ---------- Chart C: two-year comparison ---------- */
+  function renderC() {
+    const c = colors(), L = base(c), fi = state.fromC, ti = state.toC, n = narrow() ? 18 : 32;
+    const rows = DATA.groups.map(g => ({ g: g, a: DATA.group_national_usd_m[g][fi] / 1000, b: DATA.group_national_usd_m[g][ti] / 1000 })).sort((p, q) => p.b - q.b);
+    const idx = rows.map((_, i) => i), top = Math.max.apply(null, rows.map(r => Math.max(r.a, r.b))), xr = Math.max(top * 1.3, 0.2);
+    const lx = [], ly = [];
+    rows.forEach((r, i) => { lx.push(r.a, r.b, null); ly.push(i, i, null); });
+    const chg = r => r.a > 0 ? ((r.b / r.a - 1) * 100) : null;
+    const chgText = r => { const v = chg(r); return v === null ? "n/a" : (v >= 0 ? "+" : "−") + Math.abs(Math.round(v)) + "%"; };
+    const traces = [
+      { x: lx, y: ly, mode: "lines", line: { color: c.axis, width: 2 }, hoverinfo: "skip", showlegend: false },
+      { x: rows.map(r => r.a), y: idx, customdata: rows.map(r => r.g), mode: "markers", name: String(Y[fi]), marker: { color: c.old, size: 11, line: { color: c.surf, width: 2 } }, hovertemplate: "%{customdata}<br>$%{x:.2f}bn<extra>" + Y[fi] + "</extra>" },
+      { x: rows.map(r => r.b), y: idx, customdata: rows.map(r => r.g), mode: "markers", name: String(Y[ti]), marker: { color: c.nw, size: 11, line: { color: c.surf, width: 2 } }, hovertemplate: "%{customdata}<br>$%{x:.2f}bn<extra>" + Y[ti] + "</extra>" },
+      { x: rows.map(() => xr), y: idx, mode: "text", text: rows.map(chgText), textposition: "middle left", textfont: { color: c.ink, size: 12 }, hoverinfo: "skip", showlegend: false, cliponaxis: false }
+    ];
+    L.showlegend = true; L.legend = { orientation: "h", x: 0, y: 1.1, font: { color: c.ink2 } };
+    L.xaxis = Object.assign(L.xaxis, { range: [0, xr], tickprefix: "$", ticksuffix: "bn", rangemode: "tozero" });
+    L.yaxis = Object.assign(L.yaxis, { tickmode: "array", tickvals: idx, ticktext: rows.map(r => wrap(r.g, n)), range: [-0.6, rows.length - 0.3], showgrid: false, tickfont: { color: c.ink2, size: 12 } });
+    L.margin = { l: narrow() ? 110 : 190, r: 10, t: 34, b: 40 };
+    L.annotations = [{ x: xr, y: 1.0, xref: "x", yref: "paper", text: "Change", showarrow: false, xanchor: "right", yanchor: "bottom", font: { color: c.muted, size: 11 } }];
+    L.height = 440;
+    draw("plotC", traces, L);
+    table("tblC", ["Product group", Y[fi] + " ($bn)", Y[ti] + " ($bn)", "Change"], rows.slice().reverse().map(r => [r.g, r.a.toFixed(3), r.b.toFixed(3), chgText(r)]));
+  }
+
+  /* ---------- Chart D: New York share by product ---------- */
+  function renderD() {
+    const c = colors(), L = base(c), yi = state.yearD, n = narrow() ? 18 : 32, overall = yearly[yi].ny_share_pct;
+    const rows = DATA.groups.map(g => ({ g: g, nat: DATA.group_national_usd_m[g][yi], ny: DATA.group_ny_usd_m[g][yi] }))
+      .filter(r => r.nat > 0).map(r => Object.assign(r, { s: r.ny / r.nat * 100 })).sort((a, b) => b.s - a.s);
+    const trace = { type: "bar", orientation: "h", x: rows.map(r => r.s), y: rows.map(r => wrap(r.g, n)),
+      customdata: rows.map(r => [r.ny, r.nat]), marker: { color: rows.map(r => r.s > overall ? c.orange : c.gray) },
+      text: rows.map(r => r.s.toFixed(0) + "%  ($" + Math.round(r.ny).toLocaleString("en-US") + "m of $" + Math.round(r.nat).toLocaleString("en-US") + "m)"),
+      textposition: "outside", cliponaxis: false, textfont: { color: c.ink, size: 12 },
+      hovertemplate: "%{y}<br>%{x:.1f}% entered through New York<br>$%{customdata[0]:,.0f}m of $%{customdata[1]:,.0f}m<extra></extra>" };
+    L.xaxis = Object.assign(L.xaxis, { visible: false, range: [0, narrow() ? 150 : 125] });
+    L.yaxis = Object.assign(L.yaxis, { autorange: "reversed", tickfont: { color: c.ink2, size: 12 } });
+    L.shapes = [{ type: "line", xref: "x", yref: "paper", x0: overall, x1: overall, y0: 0, y1: 1, line: { color: c.ink2, width: 1 } }];
+    L.annotations = [{ x: overall, y: 1, xref: "x", yref: "paper", text: "All products: " + overall.toFixed(0) + "%", showarrow: false, xanchor: "left", yanchor: "bottom", xshift: 4, font: { color: c.ink2, size: 11 } }];
+    L.margin = { l: narrow() ? 110 : 190, r: 10, t: 26, b: 6 }; L.height = 400;
+    draw("plotD", [trace], L);
+    table("tblD", ["Product group", "New York ($m)", "National ($m)", "New York share"], rows.map(r => [r.g, r.ny.toFixed(1), r.nat.toFixed(1), r.s.toFixed(1) + "%"]));
+  }
+
+  /* ---------- Chart E: community ---------- */
+  function renderE() {
+    const c = colors(), L = base(c), k0 = state.measureE === "pak" ? "pak" : "born", k1 = k0 + "_moe", n = narrow() ? 20 : 38;
+    let rows = DATA.pumas.filter(p => state.boroughE === "All" || p.borough === state.boroughE).map(p => ({
+      label: state.boroughE === "All" ? p.area + " (" + p.borough + ")" : p.area, area: p.area, borough: p.borough,
+      est: p[k0], moe: p[k1], cv: p[k0] > 0 ? (p[k1] / 1.645) / p[k0] : Infinity }));
+    rows.sort((a, b) => b.est - a.est);
+    if (!state.allE) rows = rows.slice(0, 12);
+    const labels = rows.map(r => wrap(r.label, n)), ok = rows.filter(r => r.cv < 0.3), weak = rows.filter(r => !(r.cv < 0.3));
+    const cvText = r => isFinite(r.cv) ? (r.cv * 100).toFixed(0) + "%" : "n/a";
+    const mk = (subset, color, name) => subset.length ? { type: "bar", orientation: "h", name: name, x: subset.map(r => r.est), y: subset.map(r => wrap(r.label, n)),
+      customdata: subset.map(r => [r.moe, cvText(r)]), marker: { color: color },
+      error_x: { type: "data", array: subset.map(r => r.moe), color: c.ink2, thickness: 1, width: 3 },
+      hovertemplate: "%{y}<br>Estimate %{x:,}<br>Margin of error ±%{customdata[0]:,}<br>CV %{customdata[1]}<extra></extra>" } : null;
+    const traces = [mk(ok, c.blue, "Reasonably precise (CV under 30%)"), mk(weak, c.gray, "Weak estimate (CV 30% or more)")].filter(Boolean);
+    traces.push({ type: "scatter", mode: "text", x: rows.map(r => r.est + r.moe), y: labels, text: rows.map(r => r.est.toLocaleString("en-US")),
+      textposition: "middle right", textfont: { color: c.ink, size: 12 }, hoverinfo: "skip", showlegend: false, cliponaxis: false });
+    const xmax = Math.max.apply(null, rows.map(r => r.est + r.moe).concat([10]));
+    L.barmode = "overlay"; L.showlegend = true; L.legend = { orientation: "h", x: 0, y: 1.04, yanchor: "bottom", font: { color: c.ink2 } };
+    L.xaxis = Object.assign(L.xaxis, { range: [0, xmax * 1.18], tickformat: "," });
+    L.yaxis = Object.assign(L.yaxis, { type: "category", autorange: "reversed", categoryorder: "array", categoryarray: labels, tickfont: { color: c.ink2, size: 11 }, showgrid: false });
+    L.margin = { l: narrow() ? 130 : 270, r: 10, t: narrow() ? 70 : 40, b: 40 };
+    L.height = Math.max(300, rows.length * 32 + 120);
+    draw("plotE", traces, L);
+    table("tblE", ["Area", "Borough", state.measureE === "pak" ? "Pakistani (alone)" : "Pakistan-born", "± margin", "CV", "Precision"],
+      rows.map(r => [r.area, r.borough, r.est.toLocaleString("en-US"), r.moe.toLocaleString("en-US"), cvText(r), r.cv < 0.15 ? "high" : (r.cv < 0.3 ? "medium" : "low")]));
+  }
+
+  function renderBoroughs() {
+    const b = DATA.boroughs.slice().sort((p, q) => q.pak - p.pak);
+    table("tblBoro", ["Borough", "Pakistani (alone)", "± margin", "Share of NYC Pakistani", "Pakistan-born", "± margin", "Population"],
+      b.map(r => [r.borough, r.pak.toLocaleString("en-US"), r.pak_moe.toLocaleString("en-US"), r.share_pct.toFixed(1) + "%", r.born.toLocaleString("en-US"), r.born_moe.toLocaleString("en-US"), r.pop.toLocaleString("en-US")]));
+  }
+
+  /* ---------- wiring ---------- */
+  function renderAll() { renderA(); renderB(); renderC(); renderD(); renderE(); }
+
+  seg("segA", [{ value: "value", label: "Value ($bn)" }, { value: "share", label: "New York share (%)" }], "metricA", renderA);
+  seg("segE", [{ value: "pak", label: "Pakistani (alone)" }, { value: "born", label: "Born in Pakistan" }], "measureE", renderE);
+
+  const yb = $("yearB"); yb.max = String(iLast); yb.value = String(state.yearB);
+  yb.addEventListener("input", () => { state.yearB = Number(yb.value); renderB(); });
+
+  const yLabels = Y.map(String), yVals = Y.map((_, i) => String(i));
+  fillSelect("fromC", yVals, yLabels, String(state.fromC)); fillSelect("toC", yVals, yLabels, String(state.toC));
+  $("fromC").addEventListener("change", e => { state.fromC = Number(e.target.value); renderC(); });
+  $("toC").addEventListener("change", e => { state.toC = Number(e.target.value); renderC(); });
+  fillSelect("yearD", yVals, yLabels, String(state.yearD));
+  $("yearD").addEventListener("change", e => { state.yearD = Number(e.target.value); renderD(); });
+
+  const boroughs = ["All"].concat(Array.from(new Set(DATA.pumas.map(p => p.borough))).sort());
+  fillSelect("boroughE", boroughs, boroughs.map(b => b === "All" ? "All boroughs" : b), "All");
+  $("boroughE").addEventListener("change", e => { state.boroughE = e.target.value; renderE(); });
+  $("allE").addEventListener("change", e => { state.allE = e.target.checked; renderE(); });
+
+  renderBoroughs(); renderAll();
+
+  let timer = null;
+  window.addEventListener("resize", () => { clearTimeout(timer); timer = setTimeout(renderAll, 200); });
+  if (window.matchMedia) { const mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", renderAll); }
+  new MutationObserver(renderAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>

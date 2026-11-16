@@ -1,0 +1,10 @@
+# Secrets: never commit your Census API key
+.env
+.env.*
+*.key
+# Python and OS files
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store

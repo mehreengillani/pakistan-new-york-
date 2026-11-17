@@ -1,4 +1,6 @@
-# Pakistan and New York
+# US-Pakistan Trade Analysis
+
+**Where Pakistani goods land, and where Pakistani New Yorkers live**
 
 Two questions, one Census-based analysis, for Policy East:
 

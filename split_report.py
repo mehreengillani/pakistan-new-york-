@@ -101,7 +101,8 @@ def build(base, data_json, urls):
     <div class="hero-top">
     <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
     <p class="eyebrow">Policy East · Data analysis · Part 1 of 2</p>
-    <h1>Where Pakistani goods land</h1>
+    <h1>US-Pakistan Trade Analysis</h1>
+    <p class="subhead">Where Pakistani Goods Land</p>
     <p class="lede">US imports from Pakistan reached <span data-f="us_last_bn" data-fmt="bn2"></span> in <span data-f="last_year" data-fmt="year"></span>. New York is the largest entry point for those goods. This part reads the Census trade data, shows what it says, and marks where it stops.</p>
     </div>
     <div class="spark" id="spark" aria-hidden="true"></div>
@@ -140,7 +141,8 @@ def build(base, data_json, urls):
     <div class="hero-top" style="grid-template-columns:minmax(0,1fr)">
     <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
     <p class="eyebrow">Policy East · Data analysis · Part 2 of 2</p>
-    <h1>Where Pakistani New Yorkers live</h1>
+    <h1>US-Pakistan Trade Analysis</h1>
+    <p class="subhead">Where Pakistani New Yorkers Live</p>
     <p class="lede">About <span data-f="nyc_pakistani" data-fmt="round1000"></span> New Yorkers identify as Pakistani. This part reads the Census American Community Survey, shows where they live, and marks how precise each estimate is.</p>
     </div>
     </div>
